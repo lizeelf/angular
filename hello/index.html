@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 폴리필 작성. --> <!-- 최신라이브러리를 실행하기 위한 Help lib -->
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- Angular Application 이 사용할 모듈(라이브러리) 로딩. -->
+    <script src="./systemjs.config.js"></script>
+
+    <!-- Angular Application Loading -->
+    <script>
+        System.import('app').catch(function(err) { console.log(err); });
+    </script>
+
+</head>
+<body>
+    <my-app>Loading App...</my-app>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<ul>
+    <li class="card" *ngFor="let carPart of carParts" [class.featured] = "carPart.featured">
+        <div class="panel-body">
+            <div class="photo">
+                <img [src] = "carPart.image"/>
+            </div>
+            <table class="product-info">
+                <tr>
+                    <td>
+                        <h2>{{carPart.name | uppercase}}</h2>
+                        <p class="description">{{carPart.description}}</p>
+                        <p class="inventory" *ngIf="carPart.inStock > 0">{{carPart.inStock}} in Stock</p>
+                        <p class="inventory" *ngIf="carPart.inStock === 0">Out of Stock</p>
+                    </td>
+                    <td class="price">{{carPart.price | currency: 'EUR':true}}</td>
+                    <td>
+                        <div class="select-quantity">
+                            <button class="decrease" (click)="downQuantity(carPart)">-</button>
+
+                            <!--
+                            Two-way binding Case 1
+                            <input type="text" class="number"
+                                   [value]="carPart.quantity"
+                                   (input)="carPart.quantity = $event.target.value" />
+                                   -->
+                            <input type="text" class="number" [(ngModel)]="carPart.quantity" />
+                            <button class="increase" (click)="upQuantity(carPart)">+</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </li>
+</ul>
+
+<input type="number" value="0" (keyup)="search($event.target.value)" />
+<input type="button" value="부품 추가" (click)="addCarPart()" />
